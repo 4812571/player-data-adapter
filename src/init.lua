@@ -6,16 +6,16 @@ local Signal = require(script.Parent.Signal)
 local PlayerDataAdapter = {}
 PlayerDataAdapter.__index = PlayerDataAdapter
 
-function PlayerDataAdapter.new(baseKey, defaultData)
+function PlayerDataAdapter.new(profileStoreKey, playerBaseKey, defaultData)
     local self = setmetatable({}, PlayerDataAdapter)
 
     -- Defaults
-    self._baseKey = baseKey
+    self._baseKey = playerBaseKey
     self._defaultData = defaultData
 
     -- State
     self._loadedProfiles = {}
-    self._profileStore = ProfileService:GetProfileStore(defaultData)
+    self._profileStore = ProfileService:GetProfileStore(profileStoreKey, defaultData)
 
     -- Signals
     self._dataLoaded = Signal.new()
