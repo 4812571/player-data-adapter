@@ -15,7 +15,7 @@ function PlayerDataAdapter.new(profileStoreKey, playerBaseKey, defaultData)
 
     -- State
     self._loadedProfiles = {}
-    self._profileStore = ProfileService:GetProfileStore(profileStoreKey, defaultData)
+    self._profileStore = ProfileService.GetProfileStore(profileStoreKey, defaultData)
 
     -- Signals
     self._dataLoaded = Signal.new()
