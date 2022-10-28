@@ -56,6 +56,22 @@ function PlayerDataAdapter:_onPlayerAdded(player)
     self._dataLoaded:Fire(player)
 end
 
+function PlayerDataAdapter:Get(player, key)
+    if self._loadedProfiles[player] == nil then
+        error("Player data is not loaded")
+        return
+    end
+    return self._loadedProfiles[player].Data[key]
+end
+
+function PlayerDataAdapter:Set(player, key, value)
+    if self._loadedProfiles[player] == nil then
+        error("Player data is not loaded")
+        return
+    end
+    self._loadedProfiles[player].Data[key] = value
+end
+
 function PlayerDataAdapter:BindToDataLoaded(fn)
     for player, _ in self._loaded_profiles do
         task.spawn(fn, player)
