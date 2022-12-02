@@ -73,7 +73,7 @@ function PlayerDataAdapter:Set(player, key, value)
 end
 
 function PlayerDataAdapter:BindToDataLoaded(fn)
-    for player, _ in self._loaded_profiles do
+    for player, _ in self._loadedProfiles do
         task.spawn(fn, player)
     end
 
